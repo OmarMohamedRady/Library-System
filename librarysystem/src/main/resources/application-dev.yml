@@ -1,0 +1,41 @@
+debug: false
+
+logging:
+  level:
+    root: info
+
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 10m
+
+spring:
+  application:
+    name: test
+  config:
+    import: optional:secrets-dev.yml
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  datasource:
+    mysql:
+      url: jdbc:mysql://localhost:3306
+      username: root
+      driverClassName: com.mysql.cj.jdbc.Driver
+      dll-auto: none
+      hikari:
+        connection-timeout: 30000
+        minimum-idle: 10
+        maximum-pool-size: 10
+        idle-timeout: 10000
+        max-lifetime: 0
+        auto-commit: true
+        pool-name: springTemplateMySqlCp
+      jpa:
+        show-sql: true
+        format_sql: true
+        generate-statistics: true
+
+
