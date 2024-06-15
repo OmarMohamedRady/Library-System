@@ -37,6 +37,7 @@ spring:
         show-sql: true
         format_sql: true
         generate-statistics: true
+
 springdoc:
   api-docs:
     enabled: true

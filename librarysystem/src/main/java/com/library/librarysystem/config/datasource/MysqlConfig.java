@@ -38,8 +38,7 @@ import java.util.Objects;
         transactionManagerRef = "mysqlTM")
 @EntityScan(basePackages = {"com.library.librarysystem.mysql"})
 public class MysqlConfig {
-    @Autowired
-    private Environment env;
+
 
     @Value("${spring.datasource.mysql.dll-auto}")
     private String HBM2DDL_AUTO;

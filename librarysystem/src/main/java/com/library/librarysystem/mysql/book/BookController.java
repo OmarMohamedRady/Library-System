@@ -35,7 +35,7 @@ public class BookController {
         return ResponseEntity.ok(DataWrapperUtils.getWrapper(bookService.getById(bookId),dw));
     }
 
-    @PostMapping("/save")
+    @PostMapping("/")
     public ResponseEntity<DataWrapper<Book>> save(@RequestBody Book book) {
         if(book.getBookId() != null) return ResponseEntity.ok(DataWrapperUtils.getWrapperError("You can't insert record that has an id.",dw));
         Book save = bookService.save(book);

@@ -19,17 +19,17 @@ public class BookService {
   private final BookRepository bookRepository;
   private final BorrowingRecordRepository borrowingRecordRepository;
 
-    List<Book> findAll(Book book){
+    public List<Book> findAll(Book book){
         if(book == null || book.getStart() == null || book.getLimit() == null || (book.getStart() == 0 && book.getLimit() == 0)){
             return bookRepository.findAll();
         }
         return bookRepository.findAll(PageRequest.of(book.getStart()/book.getLimit(),book.getLimit())).toList();
     }
-    List<Book> findAll(){
+    public List<Book> findAll(){
         return findAll(null);
     }
 
-    Long getRecordsCount(){
+    public Long getRecordsCount(){
         return bookRepository.count();
     }
 
