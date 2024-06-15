@@ -20,6 +20,7 @@ public class PatronController {
     private final DataWrapper<Patron> dw;
     @GetMapping("/")
     ResponseEntity<DataWrapper<List<Patron>>> all(@RequestParam int start , @RequestParam int limit){
+        System.out.println("*****");
         Patron patron = Patron.builder()
                 .start(start)
                 .limit(limit)
@@ -36,7 +37,7 @@ public class PatronController {
 
     @PostMapping("/save")
     public ResponseEntity<DataWrapper<Patron>> save(@RequestBody Patron patron) {
-        if(patron.getPatronID() != null) return ResponseEntity.ok(DataWrapperUtils.getWrapperError("You can't insert record that has an id.",dw));
+        if(patron.getPatronId() != null) return ResponseEntity.ok(DataWrapperUtils.getWrapperError("You can't insert record that has an id.",dw));
         Patron save = patronService.save(patron);
         return ResponseEntity.ok(DataWrapperUtils.getWrapper(save,dw));
     }

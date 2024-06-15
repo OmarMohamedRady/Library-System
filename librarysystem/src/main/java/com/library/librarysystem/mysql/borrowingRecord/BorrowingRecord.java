@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(schema = "LIBRARY",name = "BORROWINGRECORD")
+@Table(catalog = "LIBRARY",schema = "LIBRARY",name = "BORROWINGRECORD")
 public class BorrowingRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

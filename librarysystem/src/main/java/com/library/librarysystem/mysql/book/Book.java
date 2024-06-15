@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(schema = "LIBRARY",name = "BOOK")
+@Table(catalog = "LIBRARY", schema = "LIBRARY",name = "BOOK")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Book {
     @NotNull(message = "Author is required")
     @Size(max = 50 ,message = "Length Should be max 50")
     private String author;
-    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss", timezone="Egypt",locale="ar_EG")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd", timezone="Egypt",locale="ar_EG")
     private LocalDate publicationYear;
     @NotNull(message = "ISBN is required")
     @Size(max = 13,message = "Length Should be max 13")

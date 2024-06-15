@@ -5,6 +5,7 @@ import com.library.librarysystem.mysql.borrowingRecord.BorrowingRecordRepository
 import com.library.librarysystem.mysql.borrowingRecord.BorrowingRecordService;
 import com.library.librarysystem.util.exceptions.GeneralException;
 import com.library.librarysystem.util.exceptions.ResourceNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BookService {
   private final BookRepository bookRepository;
   private final BorrowingRecordRepository borrowingRecordRepository;
@@ -51,7 +53,7 @@ public class BookService {
         if(book.getIsBorrowed()){
             throw new GeneralException("Book is not returned");
         }
-        List<BorrowingRecord> borrowingRecordList = borrowingRecordRepository.findByBookIdAndReturnDateIsNotNull(bookId);
+        List<BorrowingRecord> borrowingRecordList = borrowingRecordRepository.findByBookBookIdAndReturnDateIsNotNull(bookId);
         if(!borrowingRecordList.isEmpty()){
             borrowingRecordRepository.deleteAll(borrowingRecordList);
         }

@@ -14,18 +14,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(schema = "LIBRARY",name = "PATRON")
+@Table(catalog = "LIBRARY",schema = "LIBRARY",name = "PATRON")
 public class Patron {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long patronID;
+    private Long patronId;
     @NotNull(message = "Name is required")
     @Size(max = 50 , message = "Length Should be max 50")
     private String name;
     @NotNull
     @Size(max = 15 ,message = "Length Should be max 15")
     private String mobileNumber;
+    @Transient
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     Integer start;
     @Transient
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

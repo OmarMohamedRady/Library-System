@@ -5,6 +5,7 @@ import com.library.librarysystem.mysql.book.BookService;
 import com.library.librarysystem.mysql.patron.Patron;
 import com.library.librarysystem.mysql.patron.PatronService;
 import com.library.librarysystem.util.exceptions.GeneralException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BorrowingRecordService {
 
     private final BorrowingRecordRepository borrowingRecordRepository;
@@ -37,7 +39,7 @@ public class BorrowingRecordService {
 
     public BorrowingRecord returnBook(Long bookId, Long patronId){
 
-        BorrowingRecord borrowingRecord = borrowingRecordRepository.findByBookIdAndPatronIdAndReturnDateIsNull(bookId,patronId);
+        BorrowingRecord borrowingRecord = borrowingRecordRepository.findByBookBookIdAndPatronPatronIdAndReturnDateIsNull(bookId,patronId);
         if(borrowingRecord == null){
             throw new GeneralException("Book is already returned");
         }

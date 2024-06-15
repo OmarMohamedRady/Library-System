@@ -24,7 +24,7 @@ spring:
       url: jdbc:mysql://localhost:3306
       username: root
       driverClassName: com.mysql.cj.jdbc.Driver
-      dll-auto: none
+      dll-auto: update
       hikari:
         connection-timeout: 30000
         minimum-idle: 10
@@ -37,5 +37,10 @@ spring:
         show-sql: true
         format_sql: true
         generate-statistics: true
-
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
 
